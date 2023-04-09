@@ -5,7 +5,9 @@ import {
   signInWithPopup, 
   GoogleAuthProvider, 
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword} from "firebase/auth"
+  signInWithEmailAndPassword,
+  onAuthStateChanged
+} from "firebase/auth"
 import {getFirestore, doc, getDoc, setDoc} from "firebase/firestore"
 
 
@@ -77,3 +79,5 @@ const firebaseConfig = {
 
     return await signInWithEmailAndPassword(auth, email, password)
   }
+
+ 
