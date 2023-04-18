@@ -7,7 +7,7 @@ import { signInWithGooglePopup,
 import { UserContext } from "../../contexts/user.context";
 
 import FormInput from "../form-input/form-input.component";
-import Button from "../button/button.component";
+import Button, {BUTTON_TYPE_CLASSES} from "../button/button.component";
 
 
 import "./sign-in-form.styles.scss"
@@ -42,8 +42,6 @@ const SignInForm = () => {
 
         try {
            const {user} = await signInAuthUserWithEmailAndPassword(email, password)
-            
-
 
             resetFormFields()
             setCurrentUser(user)
@@ -96,7 +94,7 @@ const SignInForm = () => {
                 <div className="buttons-container">
                 <Button type = "submit"> Sign In</Button>
                 <span></span>                
-                <Button type = "button" buttonType = "google" onClick={signInWithGoogle}> Google Sign In</Button>
+                <Button type = "button" buttonType = {BUTTON_TYPE_CLASSES.google} onClick={signInWithGoogle}> Google Sign In</Button>
                 </div>
                 
             </form>
