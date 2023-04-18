@@ -1,40 +1,39 @@
-import "./checkout.styles.scss"
-import { CartContext } from "../../contexts/cart.context"
-import { useContext } from "react"
+import { useContext } from 'react';
+
+import { CartContext } from '../../contexts/cart.context';
+
+import CheckoutItem from '../../components/checkout-item/checkout-item.component';
+
+import './checkout.styles.scss';
 
 const Checkout = () => {
+  const { cartItems, cartTotal } = useContext(CartContext);
 
-
-    const {cartItems, addItemToCart, removeItemFromCart} = useContext(CartContext)
-
-    return(
-        <div className="checkout-container">
-            <div className="cheackout-header">
-                <div className="header-block">
-                    <span>Product</span>
-                </div>
-                <div className="header-block">
-                    <span>Description</span>
-                </div>
-                <div className="header-block">
-                    <span>Price</span>
-                </div>
-                <div className="header-block">
-                    <span>Remove</span>
-                </div>
-            </div>
-            {cartItems.map((item)=>
-            (<div key={item.id}>
-            <h2>{item.name}</h2>
-            <h2>{item.quantity}</h2>
-            <span onClick={()=>{addItemToCart(item)}}>Increment</span>
-            <br/>
-            <span onClick={()=>{removeItemFromCart(item)}}>Decrement</span>
-            </div>)
-            )}
-            <span className="total">Total: 0</span>
+  return (
+    <div className='checkout-container'>
+      <div className='checkout-header'>
+        <div className='header-block'>
+          <span>Product</span>
         </div>
-    )
-}
+        <div className='header-block'>
+          <span>Description</span>
+        </div>
+        <div className='header-block'>
+          <span>Quantity</span>
+        </div>
+        <div className='header-block'>
+          <span>Price</span>
+        </div>
+        <div className='header-block'>
+          <span>Remove</span>
+        </div>
+      </div>
+      {cartItems.map((cartItem) => (
+        <CheckoutItem key={cartItem.id} cartItem={cartItem} />
+      ))}
+      <span className='total'>Total: ${cartTotal}</span>
+    </div>
+  );
+};
 
-export default Checkout
+export default Checkout;
