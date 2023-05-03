@@ -15,8 +15,6 @@ const App = () =>  {
           <Route path = "shop/*" element = {<Shop></Shop>} />
           <Route path = "auth" element = {<Authentication></Authentication>} />
           <Route path = "checkout" element = {<Checkout></Checkout>} />
-
-
         </Route>
       </Routes>
       
